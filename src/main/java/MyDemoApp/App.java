@@ -6,12 +6,8 @@ package MyDemoApp;
 import java.util.ArrayList;
 
 public class App {
-    public String getGreeting() {
-        return "Hello world.";
-    }
-
     public static void main(String[] args) {
-        System.out.println(new App().getGreeting());
+        
        
 
     }
@@ -19,9 +15,9 @@ public class App {
 
     public static ArrayList<Integer> copyArray(ArrayList<Integer> fromArray, ArrayList<Integer> toArray, int startindex, int finishindex){
         if(fromArray == null || toArray == null)  throw new RuntimeException("arrays cannot be null");
-        if(startindex < 0) throw new RuntimeException("index cannot be smaller than zero");
+        if(startindex < 0) throw new RuntimeException("index cannot be less than zero");
         if(startindex >= fromArray.size() || startindex >= toArray.size() ) throw new RuntimeException("start index cannot be greater than the length of the arrays");
-        if(finishindex >= fromArray.size() || finishindex >= toArray.size() ) throw new RuntimeException("finish index cannot be greater than the length of the  arrays");
+        if(finishindex >= fromArray.size() || finishindex >= toArray.size() ) throw new RuntimeException("finish index git cannot be greater than the length of the  arrays");
         
 
         for(int i = startindex; i<=finishindex; i++){

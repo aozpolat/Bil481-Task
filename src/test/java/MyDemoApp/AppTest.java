@@ -6,9 +6,59 @@ package MyDemoApp;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 class AppTest {
-    @Test void appHasAGreeting() {
-        App classUnderTest = new App();
-        assertNotNull(classUnderTest.getGreeting(), "app should have a greeting");
+    
+    @Test
+    void firstArrayNull(){
+        ArrayList<Integer> fromArray= new ArrayList<>(Arrays.asList(1,2,3,4));
+        assertThrows(RuntimeException.class, 
+        ()-> {App.copyArray(fromArray, null, 0, 1);});
+    }
+    @Test
+    void secondArrayNull(){
+        ArrayList<Integer> toArray= new ArrayList<>(Arrays.asList(1,2,3,4));
+        assertThrows(RuntimeException.class, 
+        ()-> {App.copyArray(null, toArray, 0, 1);});
+    }
+    @Test
+    void startindexLessThanZero(){
+        ArrayList<Integer> fromArray= new ArrayList<>(Arrays.asList(1,2,3,4));
+        ArrayList<Integer> toArray= new ArrayList<>(Arrays.asList(3,6,9,7));
+
+        assertThrows(RuntimeException.class, 
+        ()-> {App.copyArray(fromArray, toArray, -1, 1);});
+    }
+    @Test
+    void startindexGreaterThanSize(){
+        ArrayList<Integer> fromArray= new ArrayList<>(Arrays.asList(1,2,3,4));
+        ArrayList<Integer> toArray= new ArrayList<>(Arrays.asList(3,6,9,7));
+
+        assertThrows(RuntimeException.class, 
+        ()-> {App.copyArray(fromArray, toArray, 4, 1);});
+    }
+
+    @Test
+    void finishindexGreaterThanSize(){
+        ArrayList<Integer> fromArray= new ArrayList<>(Arrays.asList(1,2,3,4));
+        ArrayList<Integer> toArray= new ArrayList<>(Arrays.asList(3,6,9,7));
+
+        assertThrows(RuntimeException.class, 
+        ()-> {App.copyArray(fromArray, toArray, 0, 6);});
+    }
+
+    @Test
+    void successfull(){
+        ArrayList<Integer> fromArray= new ArrayList<>(Arrays.asList(1,2,3,4));
+        ArrayList<Integer> toArray= new ArrayList<>(Arrays.asList(3,6,9,7));
+
+        ArrayList<Integer> result=new ArrayList<>(Arrays.asList(3,6,3,4));
+        App.copyArray(fromArray, toArray, 2, 3);
+        assertEquals(result, toArray);
+
     }
 }
+
+
