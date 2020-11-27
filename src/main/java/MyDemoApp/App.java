@@ -23,18 +23,19 @@ public class App {
 
       int port = Integer.parseInt(System.getenv("PORT"));
       port(port);
-      logger.error("Current port number:" + port);
-        get("/", (req, res) -> "Hello, World");
-        get("/compute",
+      logger.error("Current port number:" + port); // for local
+
+      get("/", (req, res) -> "Hello, World");
+      get("/compute",
             (rq, rs) -> {
               Map<String, String> map = new HashMap<String, String>();
               map.put("result", "not computed yet!");
               return new ModelAndView(map, "compute.mustache");
             },
             new MustacheTemplateEngine()
-        );
+      );
 
-        post("/compute", (req, res) -> {
+      post("/compute", (req, res) -> {
   
             String input1 = req.queryParams("input1");
             java.util.Scanner sc1 = new java.util.Scanner(input1);
@@ -75,7 +76,8 @@ public class App {
             }
             
             return new ModelAndView(map, "compute.mustache");
-          }, new MustacheTemplateEngine());
+          }, new MustacheTemplateEngine()
+      );
   
   
     }
