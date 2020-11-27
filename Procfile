@@ -1,1 +1,1 @@
-web: java -jar .\build\libs\MyDemoApp-all.jar
+web: java -jar build/libs/MyDemoApp-all.jar
