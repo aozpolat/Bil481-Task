@@ -29,7 +29,7 @@ public class App {
       get("/compute",
             (rq, rs) -> {
               Map<String, String> map = new HashMap<String, String>();
-              map.put("result", "not computed yet!");
+              map.put("result", "is not computed yet!");
               return new ModelAndView(map, "compute.mustache");
             },
             new MustacheTemplateEngine()
